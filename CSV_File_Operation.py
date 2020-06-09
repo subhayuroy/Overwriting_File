@@ -1,3 +1,5 @@
+#This script begins with a line containing the #! character combination, which is commonly called hash bang or shebang, and continues with the path to the interpreter. If the kernel finds that the first two bytes are #! then it uses the rest of the line as an interpreter and passes the file as an argument.
+
 #!/usr/bin/env python3
 
 """
@@ -6,9 +8,7 @@ Now, import the CSV module.
 """
 import csv
 
-"""
-Define the function read_employees. This function takes file_location (path to employees.csv) as a parameter.
-"""
+#Define the function read_employees. This function takes file_location (path to employees.csv) as a parameter.
 def read_employees(csv_file_location):
  """
  Open the CSV file by calling open and then csv.DictReader.
@@ -17,9 +17,8 @@ def read_employees(csv_file_location):
  Dialect classes can be registered by name so that callers of the CSV module don't need to know the parameter settings in advance. We will now register a dialect empDialect.
  """
  csv.register_dialect('empDialect', skipinitialspace = True, strict = True)
- """
- The main purpose of this dialect is to remove any leading spaces while parsing the CSV file.
- """
+ 
+ #The main purpose of this dialect is to remove any leading spaces while parsing the CSV file.
  employee_file = csv.DictReader(open(csv_file_location), dialect = 'empDialect')
  """
  You now need to iterate over the CSV file that you opened, i.e., employee_file. When you iterate over a CSV file, each iteration of the loop produces a dictionary from strings (key) to strings (value).
@@ -30,9 +29,8 @@ def read_employees(csv_file_location):
   employee_list.append(data)
  #Now return this list.
  return employee_list
-"""
-To test the function, call the function and save it to a variable called employee_list. Pass the path to employees.csv as a parameter to the function. Print the variable employee_list to check whether it returns a list of dictionaries.
-"""
+
+#To test the function, call the function and save it to a variable called employee_list. Pass the path to employees.csv as a parameter to the function. Print the variable employee_list to check whether it returns a list of dictionaries.
 employee_list = read_employees('/home/student-02-52d7a36a22e1/data/employees.csv')
 print(employee_list)
 
